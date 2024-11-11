@@ -5,6 +5,8 @@ let cookieParser = require("cookie-parser");
 
 let indexRouter = require("./routes/index");
 let powerCalculator = require("./routes/pvPower");
+const { connectToDatabase } = require("./lib/mongoose");
+const { User } = require("./lib/schema/userSchema");
 
 let app = express();
 
@@ -27,3 +29,12 @@ app.use(function (err, req, res, next) {
 app.listen(process.env.port, () => {
   console.log(`Example app listening on port ${process.env.port}`);
 });
+
+async function startServer() {
+  try {
+    await connectToDatabase();
+    User.createIndexes();
+  } catch (error) {}
+}
+
+startServer();
