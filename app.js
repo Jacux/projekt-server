@@ -5,8 +5,10 @@ let cookieParser = require("cookie-parser");
 
 let indexRouter = require("./routes/index");
 let powerCalculator = require("./routes/pvPower");
+
 const { connectToDatabase } = require("./lib/mongoose");
 const { User } = require("./lib/schema/userSchema");
+const { loginUser } = require("./lib/controllers/userController");
 
 let app = express();
 
@@ -16,6 +18,7 @@ app.use(cookieParser());
 
 app.use("/", indexRouter);
 app.use("/powerCalculator", powerCalculator);
+app.post("/login", loginUser);
 
 app.use(function (req, res, next) {
   next(createError(404));
