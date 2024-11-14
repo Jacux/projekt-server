@@ -17,6 +17,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use("/", indexRouter);
+app.post("/loginUser", loginUser);
+app.post("/createUser", createUser);
 
 app.listen(process.env.port, () => {
   console.log(`Example app listening on port ${process.env.port}`);
