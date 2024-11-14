@@ -12,6 +12,7 @@ const {
   loginUser,
   createUser,
   addDoneQuest,
+  checkQuest,
 } = require("./lib/controllers/userController");
 
 let app = express();
