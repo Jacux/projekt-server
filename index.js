@@ -48,4 +48,17 @@ async function startServer() {
   } catch (error) {}
 }
 
+var cron = require('node-cron');
+function quest()
+{
+  alert('Masz nowe zadanie!')
+}
+
+cron.schedule('0 1 * *', () => 
+{
+  quest(),
+  {
+    scheduled: true
+  }
+})
 startServer();
