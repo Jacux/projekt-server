@@ -8,7 +8,11 @@ let powerCalculator = require("./routes/pvPower");
 
 const { connectToDatabase } = require("./lib/mongoose");
 const { User } = require("./lib/schema/userSchema");
-const { loginUser, createUser } = require("./lib/controllers/userController");
+const {
+  loginUser,
+  createUser,
+  doneQuest,
+} = require("./lib/controllers/userController");
 
 let app = express();
 
@@ -29,6 +33,7 @@ app.get("/time", (req, res) => {
 });
 app.post("/loginUser", loginUser);
 app.post("/createUser", createUser);
+app.post("/doneQuest", doneQuest);
 
 app.listen(process.env.port, () => {
   console.log(`Example app listening on port ${process.env.port}`);
