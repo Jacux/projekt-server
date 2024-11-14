@@ -17,10 +17,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use("/", indexRouter);
-app.use("/powerCalculator", powerCalculator);
-app.post("/login", loginUser);
-
-app.post("/createUser", createUser);
 
 app.listen(process.env.port, () => {
   console.log(`Example app listening on port ${process.env.port}`);
