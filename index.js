@@ -34,6 +34,7 @@ app.get("/time", (req, res) => {
 app.post("/loginUser", loginUser);
 app.post("/createUser", createUser);
 app.post("/addDoneQuest", addDoneQuest);
+app.get("/checkQuest", checkQuest);
 
 app.listen(process.env.port, () => {
   console.log(`Example app listening on port ${process.env.port}`);
