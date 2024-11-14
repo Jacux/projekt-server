@@ -6,9 +6,12 @@ const jwt = require("jsonwebtoken");
 const createUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
+    console.log(name, email, password);
+    console.log(req);
 
-    // Hashowanie hasła
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const saltRounds = 10;
+    const salt = await bcrypt.genSalt(saltRounds);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     const newUser = new User({
       name,
@@ -17,9 +20,12 @@ const createUser = async (req, res) => {
     });
 
     await newUser.save();
-    res
-      .status(201)
-      .json({ message: "User created successfully", user: newUser });
+    const token = jwt.sign(
+      { id: newUser._id, name: newUser.name },
+      process.env.secret,
+      { expiresIn: "730h" }
+    );
+    res.status(200).json({ token, status: true });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -37,9 +43,12 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ message: "Nieprawidłowe dane logowania" });
     }
 
-    const token = jwt.sign({ id: user._id, name: user.name }, 
-      process.env.secret, { expiresIn: "730h" });
-    res.status(200).json({ token, status:true });
+    const token = jwt.sign(
+      { id: user._id, name: user.name },
+      process.env.secret,
+      { expiresIn: "730h" }
+    );
+    res.status(200).json({ token, status: true });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -105,5 +114,4 @@ module.exports = {
   updateUser,
   deleteUser,
   loginUser,
-  Token,
 };

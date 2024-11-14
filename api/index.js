@@ -8,7 +8,7 @@ let powerCalculator = require("./routes/pvPower");
 
 const { connectToDatabase } = require("./lib/mongoose");
 const { User } = require("./lib/schema/userSchema");
-const { loginUser } = require("./lib/controllers/userController");
+const { loginUser, createUser } = require("./lib/controllers/userController");
 
 let app = express();
 
@@ -20,14 +20,7 @@ app.use("/", indexRouter);
 app.use("/powerCalculator", powerCalculator);
 app.post("/login", loginUser);
 
-app.use(function (req, res, next) {
-  next(createError(404));
-});
-
-app.use(function (err, req, res, next) {
-  res.status(404);
-  res.json({ message: "Not found" });
-});
+app.post("/createUser", createUser);
 
 app.listen(process.env.port, () => {
   console.log(`Example app listening on port ${process.env.port}`);
