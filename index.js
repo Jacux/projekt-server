@@ -17,7 +17,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use("/", indexRouter);
-app.use("/time", indexRouter);
+app.use("/time", (req, res) => {
+  req.next();
+});
 app.post("/loginUser", loginUser);
 app.post("/createUser", createUser);
 
