@@ -11,7 +11,7 @@ const { User } = require("./lib/schema/userSchema");
 const {
   loginUser,
   createUser,
-  doneQuest,
+  addDoneQuest,
 } = require("./lib/controllers/userController");
 
 let app = express();
