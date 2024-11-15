@@ -25,8 +25,6 @@ app.use("/", indexRouter);
 app.get("/time", (req, res) => {
   const event = new Date();
   console.log(event.toString());
-  // Expected output: "Wed Oct 05 2011 16:48:00 GMT+0200 (CEST)"
-  // Note: your timezone may vary
 
   console.log(event.toISOString());
 
