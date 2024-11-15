@@ -1,0 +1,2 @@
+W pliku ecoboost, trzeba uzupelnic klucz api. Jeżeli państwo byście go potrzebowali proszę się skontaktować na emaila który został podany, wtedy wyślemy odpowiedni klucz. 
+W przeciwnym wypadku mieliśmy ryzyko że nasze rezpozytorium mogłoby zostać zdjęte
