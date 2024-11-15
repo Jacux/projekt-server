@@ -1,2 +1,3 @@
-W pliku ecoboost, trzeba uzupelnic klucz api. Jeżeli państwo byście go potrzebowali proszę się skontaktować na emaila który został podany, wtedy wyślemy odpowiedni klucz. 
-W przeciwnym wypadku mieliśmy ryzyko że nasze rezpozytorium mogłoby zostać zdjęte.
+W repozytorium ecoboost plik app.json oraz w rezpozytorium projekt-server plik lib/mongoose.js, trzeba uzupelnic kluczem api. 
+Jeżeli państwo byście go potrzebowali proszę się skontaktować na emaila który został podany, wtedy wyślemy odpowiedni klucz. 
+W przeciwnym wypadku mieliśmy ryzyko że klucz api mógłby zostać przechwycony przez kogoś.
