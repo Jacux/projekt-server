@@ -4,6 +4,7 @@ let express = require("express");
 let cookieParser = require("cookie-parser");
 
 let indexRouter = require("./routes/index");
+let { getForecastData } = require('./lib/controllers/forecastController');
 let powerCalculator = require("./routes/pvPower");
 
 const { connectToDatabase } = require("./lib/mongoose");
@@ -34,6 +35,7 @@ app.post("/loginUser", loginUser);
 app.post("/createUser", createUser);
 app.post("/addDoneQuest", addDoneQuest);
 app.get("/checkQuest", checkQuest);
+app.get("/getForecast", getForecastData);
 
 app.listen(process.env.port, () => {
   console.log(`Example app listening on port ${process.env.port}`);
